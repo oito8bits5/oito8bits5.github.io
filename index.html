@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Reciclagem - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <!-- MENU -->
+    <nav class="menu">
+        <div class="menu-left">
+            <img src="images/logo.png" alt="Logo do Site" class="site-logo">
+        </div>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="pontos.html">Pontos de Coleta</a></li>
+            <li><a href="articles.html">Artigos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Amarante Reciclagem</h1>
+        <p>Encontre pontos de coleta e contribua para um mundo mais sustentável</p>
+    </header>
+
+    <div class="filtro-container">
+        <button id="toggle-filters">⚙ Filtros</button>
+        <div id="filtros" class="hidden">
+            <button class="filter-btn" onclick="filtrar('Todos')">🌎 Todos</button>
+            <button class="filter-btn" onclick="filtrar('Plástico')">🛍 Plástico</button>
+            <button class="filter-btn" onclick="filtrar('Vidro')">🍾 Vidro</button>
+            <button class="filter-btn" onclick="filtrar('Metal')">🔩 Metal</button>
+            <button class="filter-btn" onclick="filtrar('Eletrônicos')">💻 Eletrônicos</button>
+            <button class="filter-btn" onclick="filtrar('Papel')">📄 Papel</button>
+        </div>
+    </div>
+
+    <!-- MAPA -->
+    <div id="map"></div>
+
+    <!-- IDEIAS -->
+    <section class="reciclagem-ideias">
+        <h2>♻ Ideias Criativas de Reciclagem</h2>
+        <div class="ideias-lista">
+            <div class="ideia">
+                <img src="images/vaso.jpg" alt="Vaso de PET">
+                <p>Garrafa PET → Vaso de plantas</p>
+            </div>
+            <div class="ideia">
+                <img src="images/luminaria.jpg" alt="Luminária de vidro">
+                <p>Garrafa de vidro → Luminária</p>
+            </div>
+            <div class="ideia">
+                <img src="images/carrinho.jpg" alt="Brinquedo de lata">
+                <p>Lata de alumínio → Brinquedo</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
