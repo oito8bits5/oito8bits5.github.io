@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Reciclagem - Pontos de Coleta</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <!-- MENU -->
+    <nav class="menu">
+        <div class="menu-left">
+            <img src="images/logo.png" alt="Logo do Site" class="site-logo">
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="pontos.html" class="active">Pontos de Coleta</a></li>
+            <li><a href="articles.html">Artigos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Pontos de Coleta e Áreas Poluídas</h1>
+        <p>Veja no mapa os locais para descartar corretamente seus resíduos e áreas mais poluídas da cidade.</p>
+    </header>
+
+    <!-- FILTRO -->
+    <div class="filtro-container">
+        <button id="toggle-filters">⚙ Filtros</button>
+        <div id="filtros" class="hidden">
+            <button class="filter-btn" data-filter="todos">🌎 Todos</button>
+            <button class="filter-btn" data-filter="coleta">♻ Pontos de Coleta</button>
+            <button class="filter-btn" data-filter="poluido">⚠ Áreas Poluídas</button>
+        </div>
+    </div>
+
+    <!-- MAPA -->
+    <div id="map" class="mapa"></div>
+
+    <!-- LISTAS -->
+    <section class="listas-mapas">
+        <div class="lista">
+            <h2>Pontos de Coleta</h2>
+            <ul id="lista-coleta"></ul>
+        </div>
+        <div class="lista">
+            <h2>Áreas Poluídas</h2>
+            <ul id="lista-poluidas"></ul>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // === Inicializa o mapa ===
+        var map = L.map('map').setView([-23.5505, -46.6333], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // === Dados ===
+        var pontosColeta = [
+            {lat:-23.5505, lng:-46.6333, tipo:'Plástico', nome:'Ponto Centro'},
+            {lat:-23.5600, lng:-46.6400, tipo:'Vidro', nome:'Ponto Bairro'},
+            {lat:-23.5400, lng:-46.6200, tipo:'Metal', nome:'Ponto Zona Sul'}
+        ];
+
+        var areasPoluidas = [
+            {lat:-23.5520, lng:-46.6350, nome:'Área Industrial'},
+            {lat:-23.5480, lng:-46.6300, nome:'Lixão'},
+            {lat:-23.5550, lng:-46.6400, nome:'Estacionamento Grande'}
+        ];
+
+        var markersColeta = [];
+        var markersPoluido = [];
+
+        // === Adiciona marcadores ===
+        pontosColeta.forEach(function(p){
+            var m = L.marker([p.lat, p.lng], {
+                icon: L.icon({iconUrl:'images/marker-green.png', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
+            }).addTo(map).bindPopup(p.nome + " (" + p.tipo + ")");
+            markersColeta.push(m);
+
+            var li = document.createElement('li');
+            li.textContent = p.nome + " (" + p.tipo + ")";
+            document.getElementById('lista-coleta').appendChild(li);
+        });
+
+        areasPoluidas.forEach(function(a){
+            var m = L.marker([a.lat, a.lng], {
+                icon: L.icon({iconUrl:'images/marker-red.png', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
+            }).addTo(map).bindPopup(a.nome);
+            markersPoluido.push(m);
+
+            var li = document.createElement('li');
+            li.textContent = a.nome;
+            document.getElementById('lista-poluidas').appendChild(li);
+        });
+
+        // === Filtros ===
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                var filter = btn.getAttribute('data-filter');
+
+                markersColeta.forEach(m => map.removeLayer(m));
+                markersPoluido.forEach(m => map.removeLayer(m));
+
+                if(filter === 'todos'){
+                    markersColeta.forEach(m => m.addTo(map));
+                    markersPoluido.forEach(m => m.addTo(map));
+                } else if(filter === 'coleta'){
+                    markersColeta.forEach(m => m.addTo(map));
+                } else if(filter === 'poluido'){
+                    markersPoluido.forEach(m => m.addTo(map));
+                }
+            });
+        });
+
+        // Toggle visibilidade filtros
+        document.getElementById('toggle-filters').addEventListener('click', () => {
+            document.getElementById('filtros').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

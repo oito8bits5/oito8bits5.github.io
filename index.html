@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa de Reciclagem - Home</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
-    <!-- MENU -->
     <nav class="menu">
         <div class="menu-left">
             <img src="images/logo.png" alt="Logo do Site" class="site-logo">
@@ -26,21 +24,6 @@
         <h1>Amarante Reciclagem</h1>
         <p>Encontre pontos de coleta e contribua para um mundo mais sustentável</p>
     </header>
-
-    <div class="filtro-container">
-        <button id="toggle-filters">⚙ Filtros</button>
-        <div id="filtros" class="hidden">
-            <button class="filter-btn" onclick="filtrar('Todos')">🌎 Todos</button>
-            <button class="filter-btn" onclick="filtrar('Plástico')">🛍 Plástico</button>
-            <button class="filter-btn" onclick="filtrar('Vidro')">🍾 Vidro</button>
-            <button class="filter-btn" onclick="filtrar('Metal')">🔩 Metal</button>
-            <button class="filter-btn" onclick="filtrar('Eletrônicos')">💻 Eletrônicos</button>
-            <button class="filter-btn" onclick="filtrar('Papel')">📄 Papel</button>
-        </div>
-    </div>
-
-    <!-- MAPA -->
-    <div id="map"></div>
 
     <!-- IDEIAS -->
     <section class="reciclagem-ideias">
@@ -60,8 +43,5 @@
             </div>
         </div>
     </section>
-
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="js/script.js"></script>
 </body>
 </html>
