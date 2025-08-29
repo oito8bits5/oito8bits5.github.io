@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- MENU -->
     <nav class="menu">
         <div class="menu-left">
             <img src="images/logo.png" alt="Logo do Site" class="site-logo">
@@ -20,6 +21,31 @@
         </ul>
     </nav>
 
+    <!-- SLIDESHOW -->
+    <section class="slideshow-container">
+        <div class="slide fade">
+            <img src="images/banner.jpg" alt="Banner de reciclagem">
+            <div class="caption">Bem-vindo ao Mapa de Reciclagem</div>
+        </div>
+        <div class="slide fade">
+            <img src="images/lixao.jpg" alt="Área poluída">
+            <div class="caption">Área poluída da cidade</div>
+        </div>
+        <div class="slide fade">
+            <img src="images/lixao2.jpg" alt="Área poluída 2">
+            <div class="caption">Ponto crítico de lixo</div>
+        </div>
+        <div class="slide fade">
+            <img src="images/lixao2.webp" alt="Área poluída 3">
+            <div class="caption">Materiais recicláveis espalhados</div>
+        </div>
+
+        <!-- Botões -->
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+    </section>
+
+    <!-- HEADER -->
     <header>
         <h1>Amarante Reciclagem</h1>
         <p>Encontre pontos de coleta e contribua para um mundo mais sustentável</p>
@@ -43,5 +69,45 @@
             </div>
         </div>
     </section>
+
+    <!-- SCRIPT SLIDESHOW -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("slide");
+        const prev = document.querySelector(".prev");
+        const next = document.querySelector(".next");
+
+        function showSlide(index) {
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex].style.display = "block";
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        next.addEventListener("click", nextSlide);
+        prev.addEventListener("click", prevSlide);
+
+        // Slideshow automático
+        function autoSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+            setTimeout(autoSlide, 5000); // troca a cada 5 segundos
+        }
+
+        showSlide(slideIndex);
+        setTimeout(autoSlide, 5000);
+    </script>
 </body>
 </html>

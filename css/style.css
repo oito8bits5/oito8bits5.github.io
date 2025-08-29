@@ -59,7 +59,7 @@ body {
 }
 
 /* =======================
-   HEADER (INDEX)
+   HEADER
    ======================= */
 header {
     display: flex;
@@ -112,7 +112,7 @@ header p {
 }
 
 /* =======================
-   FILTROS (INDEX)
+   FILTROS
    ======================= */
 .filtro-container {
     display: flex;
@@ -157,7 +157,7 @@ header p {
 }
 
 /* =======================
-   MAPA (INDEX E PONTOS DE COLETA)
+   MAPA
    ======================= */
 #map, .mapa {
     width: 80%;
@@ -170,7 +170,7 @@ header p {
 }
 
 /* =======================
-   IDEIAS CRIATIVAS (INDEX)
+   IDEIAS CRIATIVAS
    ======================= */
 .reciclagem-ideias {
     max-width: 1100px;
@@ -310,12 +310,84 @@ header p {
 }
 
 /* =======================
+   SLIDESHOW
+   ======================= */
+.slideshow-container {
+    position: relative;
+    max-width: 800px;
+    height: 300px;
+    margin: 20px auto 40px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.05);
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: fade 1s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.caption {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    text-align: center;
+    max-width: 90%;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 8px;
+    color: #fff;
+    background: rgba(0,0,0,0.4);
+    cursor: pointer;
+    border-radius: 50%;
+    user-select: none;
+    transition: background 0.3s;
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.prev:hover, .next:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+@keyframes fade {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
+
+/* =======================
    RESPONSIVO
    ======================= */
 @media (max-width: 900px) {
     .ideias-lista { grid-template-columns: repeat(2, 1fr); }
     .menu ul { gap: 15px; }
     .listas-mapas { flex-direction: column; gap: 16px; }
+    .slideshow-container { height: 250px; }
+    .caption { font-size: 0.9rem; }
 }
 
 @media (max-width: 520px) {
@@ -324,4 +396,7 @@ header p {
     .ideias-lista { grid-template-columns: 1fr; }
     #map, .mapa { height: 220px; }
     .artigo-card { padding: 15px; }
+    .slideshow-container { height: 200px; }
+    .caption { font-size: 0.8rem; }
+    .prev, .next { font-size: 1.5rem; padding: 6px; }
 }
