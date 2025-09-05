@@ -461,3 +461,55 @@ header p {
     .prev, .next { font-size: 1.5rem; padding: 6px; }
 }
 
+/* =======================
+   SOBRE MIM
+   ======================= */
+.sobre-mim {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.sobre-mim h2 {
+    color: #327d26; /* verde principal */
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.sobre-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.minha-foto {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #bbdea6; /* borda verde clara */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.sobre-texto {
+    max-width: 500px;
+    text-align: left;
+}
+
+.sobre-texto h3 {
+    color: #609d50; /* verde secundário */
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+}
+
+.sobre-texto p {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.5;
+}

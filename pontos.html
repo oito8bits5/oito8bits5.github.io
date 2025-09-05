@@ -18,7 +18,7 @@
             <li><a href="about.html">Sobre</a></li>
             <li><a href="pontos.html" class="active">Pontos de Coleta</a></li>
             <li><a href="articles.html">Artigos</a></li>
-            <li><a href="contato.html">Contato</a></li>
+            <li><a href="contato.html">Junte-se ao Projeto</a></li>
         </ul>
     </nav>
 
@@ -55,7 +55,7 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         // === Inicializa o mapa ===
-        var map = L.map('map').setView([-23.5505, -46.6333], 13);
+        var map = L.map('map').setView([-5.515941, -46.789301], 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
@@ -63,15 +63,18 @@
 
         // === Dados ===
         var pontosColeta = [
-            {lat:-23.5505, lng:-46.6333, tipo:'Plástico', nome:'Ponto Centro'},
-            {lat:-23.5600, lng:-46.6400, tipo:'Vidro', nome:'Ponto Bairro'},
-            {lat:-23.5400, lng:-46.6200, tipo:'Metal', nome:'Ponto Zona Sul'}
+            {lat:-5.567519, lng:-46.752035, tipo:'Plástico', nome:'Ponto Centro'},
+            {lat:-5.569035, lng:-46.752427, tipo:'Vidro', nome:'Ponto Bairro'},
+            {lat:-5.567527, lng:-46.745283, tipo:'Metal', nome:'Ponto Zona Sul'}
         ];
 
         var areasPoluidas = [
-            {lat:-23.5520, lng:-46.6350, nome:'Área Industrial'},
-            {lat:-23.5480, lng:-46.6300, nome:'Lixão'},
-            {lat:-23.5550, lng:-46.6400, nome:'Estacionamento Grande'}
+            {lat:-5.515941, lng:-46.789301, nome:'Área Industrial'},
+            {lat:-5.513279, lng:-46.784437, nome:'Lixão'},
+            {lat:-5.511437, lng:-46.792338, nome:'Estacionamento Grande'},
+            {lat:-5.515705, lng:-46.800101, nome:'Pista Nova'},
+            {lat:-5.513378, lng:-46.789118, nome:'Campo de Avião'},
+            {lat:-5.508589, lng:-46.788184, nome:'Saraiva Veloso'}
         ];
 
         var markersColeta = [];
@@ -80,7 +83,7 @@
         // === Adiciona marcadores ===
         pontosColeta.forEach(function(p){
             var m = L.marker([p.lat, p.lng], {
-                icon: L.icon({iconUrl:'images/marker-green.png', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
+                icon: L.icon({iconUrl:'images/logo.png', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
             }).addTo(map).bindPopup(p.nome + " (" + p.tipo + ")");
             markersColeta.push(m);
 
@@ -91,7 +94,7 @@
 
         areasPoluidas.forEach(function(a){
             var m = L.marker([a.lat, a.lng], {
-                icon: L.icon({iconUrl:'images/marker-red.png', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
+                icon: L.icon({iconUrl:'images/lixeira.webp', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
             }).addTo(map).bindPopup(a.nome);
             markersPoluido.push(m);
 
