@@ -20,7 +20,7 @@ body {
    ======================= */
 .menu {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background: #327d26; /* color1 */
     padding: 8px 16px;
@@ -40,6 +40,7 @@ body {
 .menu-left {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .site-logo {
@@ -47,6 +48,7 @@ body {
     width: auto;
 }
 
+/* Links do menu */
 .menu ul {
     list-style: none;
     display: flex;
@@ -64,6 +66,56 @@ body {
 .menu a:hover,
 .menu a.active {
     color: #bbdea6; /* color4 */
+}
+
+/* Botão hamburguer */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: #e9ffd1;
+    cursor: pointer;
+}
+
+/* =======================
+   RESPONSIVO MENU
+   ======================= */
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: #e9ffd1;
+        font-size: 1.8rem;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    .menu ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background: #327d26;
+        width: 100%;
+        padding: 10px 0;
+        border-radius: 8px;
+        align-items: center; /* centraliza links */
+    }
+
+    .menu ul.show {
+        display: flex;
+    }
+
+    .menu ul li {
+        width: 100%;
+        text-align: center; /* centraliza cada link */
+    }
 }
 
 /* =======================
@@ -98,13 +150,15 @@ header p {
    SOBRE
    ======================= */
 .about-container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    text-align: center;
+    text-align: center; /* centraliza texto e logo */
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 80px auto 0; /* espaço abaixo do menu fixo */
+}
+
+.about-logo img {
+    max-width: 200px; /* controla o tamanho da logo */
+    margin-bottom: 20px;
 }
 
 .about-container h1 {
@@ -512,4 +566,61 @@ header p {
     color: #444;
     font-size: 1rem;
     line-height: 1.5;
+}
+
+/* =======================
+   >>> RECICLAGEM DE VIDROS (NOVO) <<<
+   ======================= */
+.reciclagem-vidros {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.reciclagem-vidros h2 {
+    color: #327d26;
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+}
+
+.vidro-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 22px 0;
+}
+
+.vidro-item img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.vidro-item img:hover {
+    transform: scale(1.04);
+}
+
+.vidro-item p {
+    flex: 1;
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.vidro-item.left { flex-direction: row; }
+.vidro-item.right { flex-direction: row-reverse; text-align: right; }
+.vidro-item.right p { text-align: right; }
+
+@media (max-width: 768px) {
+    .vidro-item { flex-direction: column !important; }
+    .vidro-item img { width: 100%; height: auto; }
+    .vidro-item p { text-align: center !important; }
 }

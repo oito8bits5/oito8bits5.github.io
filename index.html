@@ -12,12 +12,13 @@
         <div class="menu-left">
             <img src="images/logo.png" alt="Logo do Site" class="site-logo">
         </div>
-        <ul>
+        <button class="menu-toggle">&#9776;</button>
+        <ul class="menu-links">
             <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">Sobre</a></li>
             <li><a href="pontos.html">Pontos de Coleta</a></li>
             <li><a href="articles.html">Artigos</a></li>
             <li><a href="contato.html">Junte-se ao Projeto</a></li>
+            <li><a href="about.html">Sobre</a></li>
         </ul>
     </nav>
 
@@ -28,8 +29,8 @@
             <div class="caption">Bem-vindo ao Mapa de Reciclagem</div>
         </div>
         <div class="slide fade">
-            <img src="images/lixao.jpg" alt="Área poluída">
-            <div class="caption">Área poluída da cidade</div>
+            <img src="images/87918.jpg" alt="Área poluída">
+            <div class="caption">Ajude a cidade de Amarante e o Povoado Mundo Novo a se tornar um lugar melhor</div>
         </div>
         <div class="slide fade">
             <img src="images/lixao2.jpg" alt="Área poluída 2">
@@ -70,6 +71,26 @@
         </div>
     </section>
 
+    <!-- NOVA SEÇÃO: RECICLAGEM DE VIDROS (intercalada) -->
+    <section class="reciclagem-vidros">
+        <h2>🟢 Reciclagem de Vidros</h2>
+
+        <div class="vidro-item left">
+            <img src="images/vidro1.jpeg" alt="Reciclagem de vidro 1">
+            <p>Reciclagens: 200kg coletados este mês.</p>
+        </div>
+
+        <div class="vidro-item right">
+            <img src="images/vidro2.jpeg" alt="Reciclagem de vidro 2">
+            <p>Reciclagens: 350kg reutilizados em novos produtos.</p>
+        </div>
+
+        <div class="vidro-item left">
+            <img src="images/vidro3.jpeg" alt="Reciclagem de vidro 3">
+            <p>Reciclagens: 150kg transformados em artesanato.</p>
+        </div>
+    </section>
+
     <!-- PAINEL DE METAS -->
     <section class="painel-metas">
         <h2>📊 Painel de Metas</h2>
@@ -89,6 +110,20 @@
                     <li>♻ Limpar 2 pontos críticos</li>
                     <li>♻ Conscientizar 15 famílias</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MIM -->
+    <section class="sobre-mim">
+      <h2>Quem Sou Eu?</h2>
+        <div class="sobre-container">
+            <img src="images/minha-foto.jpg" alt="Minha Foto" class="minha-foto">
+            <div class="sobre-texto">
+                <h3>Willian Oliveira</h3>
+                <p>
+                    Olá, meu nome é Willian, sou apaixonado por sustentabilidade e acredito que pequenas ações podem transformar o mundo. Inicialmente, criei tudo isso para ser meu projeto de extensão, mas fiquei apaixonado pelo alcance que ele pode chegar e em como ele pode mudar a vida de várias pessoas.
+                </p>
             </div>
         </div>
     </section>
@@ -132,19 +167,6 @@
         showSlide(slideIndex);
         setTimeout(autoSlide, 5000);
     </script>
-
-    <!-- SOBRE MIM -->
-    <section class="sobre-mim">
-      <h2>Quem Sou Eu?</h2>
-        <div class="sobre-container">
-            <img src="images/minha-foto.jpg" alt="Minha Foto" class="minha-foto">
-            <div class="sobre-texto">
-                <h3>Seu Nome Aqui</h3>
-                <p>
-                    Olá, meu nome é Willian, sou apaixonado por sustentabilidade e acredito que pequenas ações podem transformar o mundo. Inicialmente, criei tudo isso para ser meu projeto de extensão, mas fiquei apaixonado pelo alcance que ele pode chegar e em como ele pode mudar a vida de várias pessoas.
-                </p>
-            </div>
-        </div>
-    </section>
+    <script src="js/mobile.js"></script>
 </body>
 </html>
