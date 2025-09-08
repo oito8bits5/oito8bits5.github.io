@@ -20,7 +20,7 @@ body {
    ======================= */
 .menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* centralizado no desktop */
     align-items: center;
     background: #327d26; /* color1 */
     padding: 8px 16px;
@@ -30,11 +30,11 @@ body {
     margin: 0 auto;
     max-width: 800px;
 
-    position: fixed;  /* faz o menu fixo */
-    top: 10px;        /* distância do topo da página */
-    left: 50%;        /* centraliza horizontalmente */
+    position: fixed;  
+    top: 10px;        
+    left: 50%;        
     transform: translateX(-50%);
-    z-index: 1000;    /* garante que fique acima de outros elementos */
+    z-index: 1000;    
 }
 
 .menu-left {
@@ -49,7 +49,7 @@ body {
 }
 
 /* Links do menu */
-.menu ul {
+.menu ul.menu-links {
     list-style: none;
     display: flex;
     gap: 20px;
@@ -79,42 +79,41 @@ body {
 }
 
 /* =======================
-   RESPONSIVO MENU
+   RESPONSIVO MOBILE
    ======================= */
 @media (max-width: 768px) {
     .menu {
-        flex-direction: column;
-        align-items: center;
+        justify-content: space-between; /* menu à esquerda, toggle à direita */
+        left: 0;
+        transform: none;
+        padding: 8px 12px;
+        width: 100%;
+        border-radius: 0;
     }
 
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: #e9ffd1;
-        font-size: 1.8rem;
-        cursor: pointer;
-        margin-bottom: 10px;
-    }
-
-    .menu ul {
-        display: none;
+    .menu ul.menu-links {
+        display: none; 
         flex-direction: column;
         gap: 10px;
         background: #327d26;
         width: 100%;
         padding: 10px 0;
-        border-radius: 8px;
-        align-items: center; /* centraliza links */
+        margin-top: 8px;
+        border-radius: 0;
     }
 
-    .menu ul.show {
+    .menu ul.menu-links.show {
         display: flex;
     }
 
-    .menu ul li {
+    .menu-toggle {
+        display: block; 
+    }
+
+    .menu ul.menu-links li {
         width: 100%;
-        text-align: center; /* centraliza cada link */
+        text-align: left;
+        padding-left: 16px;
     }
 }
 
@@ -127,7 +126,7 @@ header {
     align-items: center;
     justify-content: center;
     max-width: 900px;
-    margin: 30px auto;
+    margin: 100px auto 30px; /* margem superior maior por causa do menu fixo */
     padding: 20px;
     background: #e9ffd1; /* color5 */
     border-radius: 10px;
@@ -143,33 +142,6 @@ header h1 {
 header p {
     color: #609d50; /* color2 */
     font-size: 1.1rem;
-    margin-bottom: 15px;
-}
-
-/* =======================
-   SOBRE
-   ======================= */
-.about-container {
-    text-align: center; /* centraliza texto e logo */
-    padding: 40px 20px;
-    max-width: 800px;
-    margin: 80px auto 0; /* espaço abaixo do menu fixo */
-}
-
-.about-logo img {
-    max-width: 200px; /* controla o tamanho da logo */
-    margin-bottom: 20px;
-}
-
-.about-container h1 {
-    color: #327d26; /* color1 */
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.about-container p {
-    font-size: 1.1rem;
-    color: #555;
     margin-bottom: 15px;
 }
 
@@ -275,101 +247,54 @@ header p {
 }
 
 /* =======================
-   ARTIGOS
+   RECICLAGEM DE VIDROS
    ======================= */
-.artigos-container {
-    max-width: 900px;
+.reciclagem-vidros {
+    max-width: 1100px;
     margin: 40px auto;
     padding: 20px;
-}
-
-.artigos-container h1 {
-    color: #327d26; /* color1 */
-    font-size: 2rem;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.artigo-card {
     background: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    text-align: left;
-}
-
-.artigo-card h2 {
-    color: #609d50; /* color2 */
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.data-artigo {
-    font-size: 0.9rem;
-    color: #8ebe7b; /* color3 */
-    margin-bottom: 12px;
-}
-
-.artigo-card p {
-    font-size: 1rem;
-    color: #444;
-    margin-bottom: 15px;
-}
-
-.btn-leia-mais {
-    display: inline-block;
-    padding: 8px 14px;
-    background: #327d26; /* color1 */
-    color: #fff;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s;
-}
-
-.btn-leia-mais:hover {
-    background: #609d50; /* color2 */
-}
-
-/* =======================
-   PONTOS DE COLETA
-   ======================= */
-.listas-mapas {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1100px;
-    margin: 20px auto;
-    gap: 20px;
-    padding: 0 16px;
-}
-
-.lista {
-    flex: 1 1 300px;
-    background: rgba(233,255,209,0.95); /* color5 */
-    border-radius: 10px;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    text-align: left;
-}
-
-.lista h2 {
     text-align: center;
-    color: #327d26; /* color1 */
-    margin-bottom: 12px;
 }
 
-.lista ul {
-    list-style: none;
-    padding: 0;
+.reciclagem-vidros h2 {
+    color: #327d26;
+    margin-bottom: 24px;
+    font-size: 1.8rem;
 }
 
-.lista li {
-    padding: 6px 0;
-    border-bottom: 1px solid #bbdea6; /* color4 */
-    color: #111;
+.vidro-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 22px 0;
 }
+
+.vidro-item img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.vidro-item img:hover {
+    transform: scale(1.04);
+}
+
+.vidro-item p {
+    flex: 1;
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.vidro-item.left { flex-direction: row; }
+.vidro-item.right { flex-direction: row-reverse; text-align: right; }
+.vidro-item.right p { text-align: right; }
 
 /* =======================
    SLIDESHOW
@@ -494,28 +419,6 @@ header p {
 }
 
 /* =======================
-   RESPONSIVO
-   ======================= */
-@media (max-width: 900px) {
-    .ideias-lista { grid-template-columns: repeat(2, 1fr); }
-    .menu ul { gap: 15px; }
-    .listas-mapas { flex-direction: column; gap: 16px; }
-    .slideshow-container { height: 250px; }
-    .caption { font-size: 0.9rem; }
-}
-
-@media (max-width: 520px) {
-    .menu { flex-direction: column; }
-    .site-logo { height: 20px; margin-bottom: 10px; }
-    .ideias-lista { grid-template-columns: 1fr; }
-    #map, .mapa { height: 220px; }
-    .artigo-card { padding: 15px; }
-    .slideshow-container { height: 200px; }
-    .caption { font-size: 0.8rem; }
-    .prev, .next { font-size: 1.5rem; padding: 6px; }
-}
-
-/* =======================
    SOBRE MIM
    ======================= */
 .sobre-mim {
@@ -529,7 +432,7 @@ header p {
 }
 
 .sobre-mim h2 {
-    color: #327d26; /* verde principal */
+    color: #327d26; 
     margin-bottom: 25px;
     font-size: 1.8rem;
 }
@@ -547,7 +450,7 @@ header p {
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #bbdea6; /* borda verde clara */
+    border: 4px solid #bbdea6;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
@@ -557,7 +460,7 @@ header p {
 }
 
 .sobre-texto h3 {
-    color: #609d50; /* verde secundário */
+    color: #609d50; 
     margin-bottom: 12px;
     font-size: 1.4rem;
 }
@@ -569,58 +472,30 @@ header p {
 }
 
 /* =======================
-   >>> RECICLAGEM DE VIDROS (NOVO) <<<
+   RESPONSIVO
    ======================= */
-.reciclagem-vidros {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    text-align: center;
+@media (max-width: 900px) {
+    .ideias-lista { grid-template-columns: repeat(2, 1fr); }
+    .listas-mapas { flex-direction: column; gap: 16px; }
+    .slideshow-container { height: 250px; }
+    .caption { font-size: 0.9rem; }
 }
-
-.reciclagem-vidros h2 {
-    color: #327d26;
-    margin-bottom: 24px;
-    font-size: 1.8rem;
-}
-
-.vidro-item {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin: 22px 0;
-}
-
-.vidro-item img {
-    width: 420px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 14px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
-}
-
-.vidro-item img:hover {
-    transform: scale(1.04);
-}
-
-.vidro-item p {
-    flex: 1;
-    font-size: 1.1rem;
-    color: #444;
-    line-height: 1.6;
-    text-align: left;
-}
-
-.vidro-item.left { flex-direction: row; }
-.vidro-item.right { flex-direction: row-reverse; text-align: right; }
-.vidro-item.right p { text-align: right; }
 
 @media (max-width: 768px) {
+    .ideias-lista { grid-template-columns: 1fr; }
+
     .vidro-item { flex-direction: column !important; }
     .vidro-item img { width: 100%; height: auto; }
     .vidro-item p { text-align: center !important; }
+
+    #map, .mapa { width: 95%; height: 220px; }
+
+    header { margin-top: 120px; }
+}
+
+@media (max-width: 520px) {
+    .slideshow-container { height: 200px; }
+    .caption { font-size: 0.8rem; }
+    .prev, .next { font-size: 1.5rem; padding: 6px; }
+    .site-logo { height: 20px; margin-bottom: 10px; }
 }
