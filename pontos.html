@@ -1,133 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa de Reciclagem - Pontos de Coleta</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Reciclagem - Pontos de Coleta</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
-    <!-- MENU -->
-    <nav class="menu">
-        <div class="menu-left">
-            <img src="images/logo.png" alt="Logo do Site" class="site-logo">
-        </div>
-        <button class="menu-toggle">&#9776;</button>
-        <ul class="menu-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="pontos.html" class="active">Pontos de Coleta</a></li>
-            <li><a href="articles.html">Artigos</a></li>
-            <li><a href="contato.html">Junte-se ao Projeto</a></li>
-            <li><a href="about.html">Sobre</a></li>
-        </ul>
-    </nav>
-
-    <header>
-        <h1>Pontos de Coleta e Áreas Poluídas</h1>
-        <p>Veja no mapa os locais para descartar corretamente seus resíduos e áreas mais poluídas da cidade.</p>
-    </header>
-
-    <!-- FILTRO -->
-    <div class="filtro-container">
-        <button id="toggle-filters">⚙ Filtros</button>
-        <div id="filtros" class="hidden">
-            <button class="filter-btn" data-filter="todos">🌎 Todos</button>
-            <button class="filter-btn" data-filter="coleta">♻ Pontos de Coleta</button>
-            <button class="filter-btn" data-filter="poluido">⚠ Áreas Poluídas</button>
-        </div>
+  <!-- MENU -->
+  <nav class="menu">
+    <div class="menu-left">
+      <img src="images/logo.png" alt="Logo do Site" class="site-logo" style="height:30px;">
     </div>
+    <ul class="menu-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="pontos.html" class="active">Pontos de Coleta</a></li>
+      <li><a href="articles.html">Artigos</a></li>
+      <li><a href="contato.html">Junte-se ao Projeto</a></li>
+      <li><a href="about.html">Sobre</a></li>
+    </ul>
+  </nav>
 
-    <!-- MAPA -->
-    <div id="map" class="mapa"></div>
+  <header>
+    <h1>Pontos de Coleta e Áreas Poluídas</h1>
+    <p>Veja no mapa os locais para descartar corretamente seus resíduos e áreas mais poluídas da cidade.</p>
+  </header>
 
-    <!-- LISTAS -->
-    <section class="listas-mapas">
-        <div class="lista">
-            <h2>Pontos de Coleta</h2>
-            <ul id="lista-coleta"></ul>
-        </div>
-        <div class="lista">
-            <h2>Áreas Poluídas</h2>
-            <ul id="lista-poluidas"></ul>
-        </div>
-    </section>
+  <!-- FILTRO -->
+  <div class="filtro-container" style="text-align:center; margin:20px 0;">
+    <button id="toggle-filters">⚙ Filtros</button>
+    <div id="filtros" class="hidden">
+      <button class="filter-btn" data-filter="todos">🌎 Todos</button>
+      <button class="filter-btn" data-filter="coleta">♻ Pontos de Coleta</button>
+      <button class="filter-btn" data-filter="poluido">⚠ Áreas Poluídas</button>
+    </div>
+  </div>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        // === Inicializa o mapa ===
-        var map = L.map('map').setView([-5.515941, -46.789301], 13);
+  <!-- MAPA -->
+  <div id="map"></div>
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+  <!-- LISTAS -->
+  <section class="listas-mapas">
+    <div class="lista">
+      <h2>Pontos de Coleta</h2>
+      <ul id="lista-coleta"></ul>
+    </div>
+    <div class="lista">
+      <h2>Áreas Poluídas</h2>
+      <ul id="lista-poluidas"></ul>
+    </div>
+  </section>
 
-        // === Dados ===
-        var pontosColeta = [
-            {lat:-5.567519, lng:-46.752035, tipo:'Plástico', nome:'Ponto Centro'},
-            {lat:-5.569035, lng:-46.752427, tipo:'Vidro', nome:'Ponto Bairro'},
-            {lat:-5.567527, lng:-46.745283, tipo:'Metal', nome:'Ponto Zona Sul'}
-        ];
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([-5.515941, -46.789301], 13);
 
-        var areasPoluidas = [
-            {lat:-5.515941, lng:-46.789301, nome:'Área Industrial'},
-            {lat:-5.513279, lng:-46.784437, nome:'Lixão'},
-            {lat:-5.511437, lng:-46.792338, nome:'Estacionamento Grande'},
-            {lat:-5.515705, lng:-46.800101, nome:'Pista Nova'},
-            {lat:-5.513378, lng:-46.789118, nome:'Campo de Avião'},
-            {lat:-5.508589, lng:-46.788184, nome:'Saraiva Veloso'}
-        ];
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-        var markersColeta = [];
-        var markersPoluido = [];
+    var pontosColeta = [
+      {lat:-5.567519, lng:-46.752035, tipo:'Plástico', nome:'Ponto Centro'},
+      {lat:-5.569035, lng:-46.752427, tipo:'Vidro', nome:'Ponto Bairro'},
+      {lat:-5.567527, lng:-46.745283, tipo:'Metal', nome:'Ponto Zona Sul'}
+    ];
 
-        // === Adiciona marcadores ===
-        pontosColeta.forEach(function(p){
-            var m = L.marker([p.lat, p.lng], {
-                icon: L.icon({iconUrl:'images/logo.png', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
-            }).addTo(map).bindPopup(p.nome + " (" + p.tipo + ")");
-            markersColeta.push(m);
+    var areasPoluidas = [
+      {lat:-5.515941, lng:-46.789301, nome:'Área Industrial'},
+      {lat:-5.513279, lng:-46.784437, nome:'Lixão'},
+      {lat:-5.511437, lng:-46.792338, nome:'Estacionamento Grande'},
+      {lat:-5.515705, lng:-46.800101, nome:'Pista Nova'},
+      {lat:-5.513378, lng:-46.789118, nome:'Campo de Avião'},
+      {lat:-5.508589, lng:-46.788184, nome:'Saraiva Veloso'}
+    ];
 
-            var li = document.createElement('li');
-            li.textContent = p.nome + " (" + p.tipo + ")";
-            document.getElementById('lista-coleta').appendChild(li);
-        });
+    var markersColeta = [];
+    var markersPoluido = [];
 
-        areasPoluidas.forEach(function(a){
-            var m = L.marker([a.lat, a.lng], {
-                icon: L.icon({iconUrl:'images/lixeira.webp', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
-            }).addTo(map).bindPopup(a.nome);
-            markersPoluido.push(m);
+    pontosColeta.forEach(function(p){
+      var m = L.marker([p.lat, p.lng], {
+        icon: L.icon({iconUrl:'images/logo.png', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
+      }).addTo(map).bindPopup(p.nome + " (" + p.tipo + ")");
+      markersColeta.push(m);
 
-            var li = document.createElement('li');
-            li.textContent = a.nome;
-            document.getElementById('lista-poluidas').appendChild(li);
-        });
+      var li = document.createElement('li');
+      li.textContent = p.nome + " (" + p.tipo + ")";
+      document.getElementById('lista-coleta').appendChild(li);
+    });
 
-        // === Filtros ===
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                var filter = btn.getAttribute('data-filter');
+    areasPoluidas.forEach(function(a){
+      var m = L.marker([a.lat, a.lng], {
+        icon: L.icon({iconUrl:'images/lixeira.webp', iconSize:[25,41], iconAnchor:[12,41], popupAnchor:[1,-34]})
+      }).addTo(map).bindPopup(a.nome);
+      markersPoluido.push(m);
 
-                markersColeta.forEach(m => map.removeLayer(m));
-                markersPoluido.forEach(m => map.removeLayer(m));
+      var li = document.createElement('li');
+      li.textContent = a.nome;
+      document.getElementById('lista-poluidas').appendChild(li);
+    });
 
-                if(filter === 'todos'){
-                    markersColeta.forEach(m => m.addTo(map));
-                    markersPoluido.forEach(m => m.addTo(map));
-                } else if(filter === 'coleta'){
-                    markersColeta.forEach(m => m.addTo(map));
-                } else if(filter === 'poluido'){
-                    markersPoluido.forEach(m => m.addTo(map));
-                }
-            });
-        });
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        var filter = btn.getAttribute('data-filter');
+        markersColeta.forEach(m => map.removeLayer(m));
+        markersPoluido.forEach(m => map.removeLayer(m));
 
-        // Toggle visibilidade filtros
-        document.getElementById('toggle-filters').addEventListener('click', () => {
-            document.getElementById('filtros').classList.toggle('hidden');
-        });
-    </script>
-    <script src="js/mobile.js"></script>
+        if(filter === 'todos'){
+          markersColeta.forEach(m => m.addTo(map));
+          markersPoluido.forEach(m => m.addTo(map));
+        } else if(filter === 'coleta'){
+          markersColeta.forEach(m => m.addTo(map));
+        } else if(filter === 'poluido'){
+          markersPoluido.forEach(m => m.addTo(map));
+        }
+      });
+    });
+
+    document.getElementById('toggle-filters').addEventListener('click', () => {
+      document.getElementById('filtros').classList.toggle('hidden');
+      setTimeout(() => { map.invalidateSize(); }, 200);
+    });
+  </script>
 </body>
 </html>
+

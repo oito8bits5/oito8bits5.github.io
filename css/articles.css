@@ -1,0 +1,84 @@
+/* =======================
+   ARTIGOS
+   ======================= */
+.artigos-container {
+    max-width: 1100px;
+    margin: 100px auto 50px; /* margem superior maior para o menu fixo */
+    padding: 0 16px;
+    text-align: center;
+}
+
+.artigos-container h1 {
+    font-size: 2rem;
+    color: #327d26; /* color1 */
+    margin-bottom: 30px;
+}
+
+.artigo-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 20px;
+    margin-bottom: 24px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artigo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.artigo-card h2 {
+    color: #327d26; /* color1 */
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.data-artigo {
+    font-size: 0.9rem;
+    color: #609d50; /* color2 */
+    margin-bottom: 12px;
+}
+
+.artigo-card p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.btn-leia-mais {
+    display: inline-block;
+    text-decoration: none;
+    background: #327d26; /* color1 */
+    color: #e9ffd1; /* color5 */
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-leia-mais:hover {
+    background: #609d50; /* color2 */
+    transform: translateY(-2px);
+}
+
+/* =======================
+   RESPONSIVO ARTIGOS
+   ======================= */
+@media (max-width: 900px) {
+    .artigos-container h1 { font-size: 1.8rem; }
+    .artigo-card h2 { font-size: 1.3rem; }
+}
+
+@media (max-width: 768px) {
+    .artigos-container { margin-top: 140px; } /* mais espaço para menu fixo */
+    .artigo-card { padding: 16px; }
+}
+
+@media (max-width: 520px) {
+    .artigos-container h1 { font-size: 1.5rem; }
+    .artigo-card h2 { font-size: 1.2rem; }
+    .btn-leia-mais { padding: 6px 12px; font-size: 0.9rem; }
+}
